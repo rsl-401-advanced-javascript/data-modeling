@@ -1,8 +1,12 @@
 'use strict';
 
+const Category = require('../schemas/categories');
+
 class Categories {
 
-  constructor() {}
+  constructor() {
+    this.database = [];
+  }
 
   get(_id) {}
 
