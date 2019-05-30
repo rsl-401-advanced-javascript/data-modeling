@@ -8,7 +8,9 @@ class Categories {
     this.database = [];
   }
 
-  get(_id) {}
+  get(_id) {
+    return Promise.resolve(this.database.find(cat => cat._id === _id));
+  }
 
   post(record) {
     this.database.push(record);

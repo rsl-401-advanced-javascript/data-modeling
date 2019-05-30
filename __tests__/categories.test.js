@@ -20,7 +20,14 @@ describe('Categories', () => {
       name: "Pizza"
     });
     received = await db.post(newCategory);
-    expected = "Pizza";
+    expected = 'Pizza';
+
+    expect(received.name).toBe(expected);
+  });
+
+  it('should be able to return a specified category', async () => {
+    received = await db.get(received._id);
+    expected = 'Pizza';
 
     expect(received.name).toBe(expected);
   });
