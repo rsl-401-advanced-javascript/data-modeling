@@ -10,7 +10,10 @@ class Categories {
 
   get(_id) {}
 
-  post(record) {}
+  post(record) {
+    this.database.push(record);
+    return Promise.resolve(this.database.find(cat => cat.name === record.name));
+  }
 
   put(_id, record) {}
 
