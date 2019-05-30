@@ -2,20 +2,15 @@
 
 class Categories {
 
-  constructor() {
-  }
+  constructor() {}
 
-  get(_id) {
-  }
-  
-  post(record) {
-  }
+  get(_id) {}
 
-  put(_id, record) {
-  }
+  post(record) {}
 
-  delete(_id) {
-  }
+  put(_id, record) {}
+
+  delete(_id) {}
 
 }
 
