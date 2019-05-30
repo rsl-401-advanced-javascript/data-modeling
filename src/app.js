@@ -29,10 +29,10 @@ app.use(express.urlencoded({
 }));
 
 // Routes
-const categories = require('./routes/categories');
-const products = require('./routes/products');
-app.use(categories);
-app.use(products);
+const categoriesRoute = require('./routes/categories');
+const productsRoute = require('./routes/products');
+app.use(categoriesRoute);
+app.use(productsRoute);
 
 // Catchalls
 app.use(notFound);
