@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "stable"
+sudo: required
+before_script:
+  - npm install jest
+script:
+  - npm test
+branch:
+  only:
+    - master
