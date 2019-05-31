@@ -40,7 +40,7 @@ class Products {
     return Product.deleteOne({
         _id: id
       })
-      .then(() => console.log(`Deleted product ${id}`));
+      .then(() => `Deleted product ${id}`);
   }
 
   sanitize(entry) {}
