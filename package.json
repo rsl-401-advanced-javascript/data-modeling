@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "watch": "nodemon .",
-    "test": "jest --verbose --coverage --detectOpenHandles",
+    "test": "jest --verbose --coverage --detectOpenHandles --forceExit",
     "test-watch": "jest --watchAll --verbose"
   },
   "jest": {
