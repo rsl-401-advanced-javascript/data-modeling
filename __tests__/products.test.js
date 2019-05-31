@@ -43,6 +43,7 @@ describe('Products', () => {
   it('should delete the specified product', () => {
     return mockRequest
       .delete(`/products/${id}`)
-      .expect(200);
+      .expect(200)
+      .then(res => expect(res.body).toBe('Deleted product'));
   });
 });
