@@ -7,8 +7,8 @@ const Product = new mongoose.Schema({
   category: String
 });
 
-Product.pre('save', async () => {
-  await Promise.resolve(this.name = name.toUpperCase());
-});
+// Product.pre('save', async () => {
+//   await Promise.resolve(this.name.toUpperCase());
+// });
 
 module.exports = mongoose.model("Product", Product);

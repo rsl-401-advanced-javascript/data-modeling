@@ -1,5 +1,8 @@
 'use strict';
 
+const Products = require('../models/products.js');
+const products = new Products();
+
 const {
   Router
 } = require('express');
@@ -33,9 +36,10 @@ function getProduct(request, response, next) {
 
 function postProducts(request, response, next) {
   // expects the record that was just added to the database
+  console.log(request.body);
   products.post(request.body)
     .then(result => response.status(200).json(result))
-    .catch(next);
+    .catch(console.error);
 }
 
 

@@ -1,9 +1,12 @@
 'use strict';
 
-const uuid = require('uuid/v4');
+const mongoConnect = require('../../util/mongoose-connect');
+const MONGODB_URI = process.env.MONGODB_URI ||
+  'mongodb://localhost/data-modeling';
 
-const schema = {
-};
+const Product = require('../schemas/products');
+
+mongoConnect(MONGODB_URI);
 
 class Products {
 
@@ -11,20 +14,19 @@ class Products {
     this.database = [];
   }
 
-  get(id) {
-  }
-  
+  get(id) {}
+
   post(entry) {
+    let product = new Product(entry);
+    return product.save()
+      .then(res => res);
   }
 
-  put(id, entry) {
-  }
+  put(id, entry) {}
 
-  delete(id) {
-  }
+  delete(id) {}
 
-  sanitize(entry) {
-  }
+  sanitize(entry) {}
 
 }
 
