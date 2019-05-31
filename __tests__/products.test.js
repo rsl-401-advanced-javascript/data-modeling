@@ -57,6 +57,6 @@ describe('Products', () => {
   });
 
   afterAll(() => {
-    return mongoClose();
+    return mongoConnect.close();
   });
 });
