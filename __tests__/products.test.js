@@ -7,6 +7,7 @@ const supertest = require('supertest');
 const mockRequest = supertest(server);
 
 describe('Products', () => {
+  let id;
 
   it('should create a new product and save it to the database', () => {
     const entry = {
@@ -17,18 +18,21 @@ describe('Products', () => {
       .post('/products')
       .send(entry)
       .expect(200)
-      .then(res => console.log(res.body) && expect(res.body.name).toBe(entry.name));
+      .then(res => {
+        id = res.body._id;
+        expect(res.body.name).toBe(entry.name);
+      });
   });
 
   it('should return the specified product', () => {
     return mockRequest
-      .get('/products/5cf1308b5296201a400b763b')
+      .get(`/products/${id}`)
       .expect(200);
   });
 
   it('should update the specified product', () => {
     return mockRequest
-      .put('/products/5cf1308b5296201a400b763b')
+      .put(`/products/${id}`)
       .send({
         name: 'brooklyn'
       })
@@ -38,7 +42,7 @@ describe('Products', () => {
 
   it('should delete the specified product', () => {
     return mockRequest
-      .delete('/products/5cf1308b5296201a400b763b')
+      .delete(`/products/${id}`)
       .expect(200);
   });
 });
