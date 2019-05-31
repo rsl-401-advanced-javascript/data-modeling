@@ -25,4 +25,14 @@ describe('Products', () => {
       .get('/products/5cf1308b5296201a400b763b')
       .expect(200);
   });
+
+  it('should update the specified product', () => {
+    return mockRequest
+      .put('/products/5cf1308b5296201a400b763b')
+      .send({
+        name: 'brooklyn'
+      })
+      .expect(200)
+      .then(res => expect(res.body.name).toBe('brooklyn'));
+  });
 });

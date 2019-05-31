@@ -27,7 +27,14 @@ class Products {
       .then(res => res);
   }
 
-  put(id, entry) {}
+  put(id, entry) {
+    return Product.updateOne({
+        _id: id
+      }, {
+        name: entry.name
+      })
+      .then(() => this.get(id));
+  }
 
   delete(id) {}
 
