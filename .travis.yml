@@ -9,3 +9,10 @@ script:
 branch:
   only:
     - master
+services:
+  - mongodb
+env:
+  - MONGOLAB_URI="mongodb://localhost/data-modeling"
+notifications:
+  email:
+    - false
