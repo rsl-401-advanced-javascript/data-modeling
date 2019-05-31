@@ -12,7 +12,7 @@ const MONGODB_URI = process.env.MONGODB_URI ||
 describe('Products', () => {
 
   beforeAll(() => {
-    mongoConnect(MONGODB_URI);
+    return mongoConnect(MONGODB_URI);
   })
 
   let id;
