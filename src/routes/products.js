@@ -24,19 +24,18 @@ function getProducts(request, response, next) {
       };
       response.status(200).json(output);
     })
-    .catch(next);
+    .catch(console.error);
 }
 
 function getProduct(request, response, next) {
   // expects an array with one object in it
   products.get(request.params.id)
     .then(result => response.status(200).json(result[0]))
-    .catch(next);
+    .catch(console.error);
 }
 
 function postProducts(request, response, next) {
   // expects the record that was just added to the database
-  console.log(request.body);
   products.post(request.body)
     .then(result => response.status(200).json(result))
     .catch(console.error);
@@ -47,14 +46,14 @@ function putProducts(request, response, next) {
   // expects the record that was just updated in the database
   products.put(request.params.id, request.body)
     .then(result => response.status(200).json(result))
-    .catch(next);
+    .catch(console.error);
 }
 
 function deleteProducts(request, response, next) {
   // Expects no return value (the resource should be gone)
   products.delete(request.params.id)
     .then(result => response.status(200).json(result))
-    .catch(next);
+    .catch(console.error);
 }
 
 module.exports = router;

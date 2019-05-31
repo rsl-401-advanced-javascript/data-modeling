@@ -17,6 +17,12 @@ describe('Products', () => {
       .post('/products')
       .send(entry)
       .expect(200)
-      .then(res => expect(res.body.name).toBe(entry.name));
+      .then(res => console.log(res.body) && expect(res.body.name).toBe(entry.name));
+  });
+
+  it('should return the specified product', () => {
+    return mockRequest
+      .get('/products/5cf1308b5296201a400b763b')
+      .expect(200);
   });
 });

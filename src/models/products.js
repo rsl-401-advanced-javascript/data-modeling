@@ -14,7 +14,12 @@ class Products {
     this.database = [];
   }
 
-  get(id) {}
+  get(id) {
+    return Product.findOne({
+        _id: id
+      })
+      .then(res => res);
+  }
 
   post(entry) {
     let product = new Product(entry);
