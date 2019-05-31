@@ -35,4 +35,10 @@ describe('Products', () => {
       .expect(200)
       .then(res => expect(res.body.name).toBe('brooklyn'));
   });
+
+  it('should delete the specified product', () => {
+    return mockRequest
+      .delete('/products/5cf1308b5296201a400b763b')
+      .expect(200);
+  });
 });

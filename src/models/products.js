@@ -36,7 +36,12 @@ class Products {
       .then(() => this.get(id));
   }
 
-  delete(id) {}
+  delete(id) {
+    return Product.deleteOne({
+        _id: id
+      })
+      .then(() => console.log(`Deleted product ${id}`));
+  }
 
   sanitize(entry) {}
 
