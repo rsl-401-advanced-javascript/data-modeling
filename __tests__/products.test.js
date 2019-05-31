@@ -5,8 +5,16 @@ const {
 } = require('../src/app');
 const supertest = require('supertest');
 const mockRequest = supertest(server);
+const mongoConnect = require('../util/mongoose-connect');
+const MONGODB_URI = process.env.MONGODB_URI ||
+  'mongodb://localhost/data-modeling';
 
 describe('Products', () => {
+
+  beforeAll(() => {
+    mongoConnect(MONGODB_URI);
+  })
+
   let id;
 
   it('should create a new product and save it to the database', () => {
