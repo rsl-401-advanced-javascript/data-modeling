@@ -28,7 +28,7 @@ describe('Products', () => {
       .expect(200)
       .then(res => {
         id = res.body._id;
-        expect(res.body.name).toBe(entry.name);
+        expect(res.body.name).toBe(entry.name.toUpperCase());
       });
   });
 
