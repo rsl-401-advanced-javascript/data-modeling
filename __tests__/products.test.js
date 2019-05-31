@@ -5,6 +5,7 @@ const {
 } = require('../src/app');
 const supertest = require('supertest');
 const mockRequest = supertest(server);
+const mongoose = require('mongoose');
 
 describe('Products', () => {
   let id;
@@ -19,7 +20,7 @@ describe('Products', () => {
       .send(entry)
       .expect(200)
       .then(res => {
-        id = res.body._id;
+        id = mongoose.Types.ObjectId(res.body._id);
         expect(res.body.name).toBe(entry.name);
       });
   });
