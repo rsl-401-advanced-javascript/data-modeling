@@ -6,14 +6,15 @@ const {
 const supertest = require('supertest');
 const mockRequest = supertest(server);
 const mongoConnect = require('../util/mongoose-connect');
-const MONGODB_URI = process.env.MONGODB_URI ||
+const mongoClose = require('../util/mongoose-close');
+const MONGOLAB_URI = process.env.MONGOLAB_URI ||
   'mongodb://localhost/data-modeling';
 
 describe('Products', () => {
 
   beforeAll(() => {
-    return mongoConnect(MONGODB_URI);
-  })
+    return mongoConnect(MONGOLAB_URI);
+  });
 
   let id;
 
@@ -53,5 +54,9 @@ describe('Products', () => {
       .delete(`/products/${id}`)
       .expect(200)
       .then(res => expect(res.body).toBe('Deleted product'));
+  });
+
+  afterAll(() => {
+    return mongoClose();
   });
 });
