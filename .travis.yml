@@ -6,7 +6,7 @@ before_script:
   - npm install jest
 script:
   - npm test
-branch:
+branches:
   only:
     - master
 services:
