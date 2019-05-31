@@ -3,7 +3,7 @@ node_js:
   - "stable"
 sudo: required
 before_script:
-  - npm install
+  - npm install jest
 script:
   - npm test
 branch:
