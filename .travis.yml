@@ -6,6 +6,13 @@ before_script:
   - npm install jest
 script:
   - npm test
-branch:
+branches:
   only:
     - master
+services:
+  - mongodb
+env:
+  - MONGOLAB_URI="mongodb://localhost/data-modeling"
+notifications:
+  email:
+    - false

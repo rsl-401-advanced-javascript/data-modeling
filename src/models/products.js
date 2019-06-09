@@ -1,9 +1,6 @@
 'use strict';
 
-const uuid = require('uuid/v4');
-
-const schema = {
-};
+const Product = require('../schemas/products');
 
 class Products {
 
@@ -12,19 +9,35 @@ class Products {
   }
 
   get(id) {
+    return Product.findOne({
+        _id: id
+      })
+      .then(res => res);
   }
-  
+
   post(entry) {
+    let product = new Product(entry);
+    return product.save()
+      .then(res => res);
   }
 
   put(id, entry) {
+    return Product.updateOne({
+        _id: id
+      }, {
+        name: entry.name
+      })
+      .then(() => this.get(id));
   }
 
   delete(id) {
+    return Product.deleteOne({
+        _id: id
+      })
+      .then(() => 'Deleted product');
   }
 
-  sanitize(entry) {
-  }
+  sanitize(entry) {}
 
 }
 
